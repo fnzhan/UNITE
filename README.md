@@ -1,9 +1,9 @@
 # UNITE and UNITE+
-Unbalanced Feature Transport for Exemplar-based Image Translation (CVPR 2021)
+Unbalanced Feature Transport for Exemplar-based Image Translation (CVPR 2021)  <br>
 Unbalanced Intrinsic Feature Transport for Exemplar-based Image Translation (Extension)
 
 ## Pre-trained Models
-Pre-trained models will be released soon with the extension version.
+Pre-trained models will be released soon with the extended version.
 
 ### Citation
 If you use this code for your research, please cite our papers.
