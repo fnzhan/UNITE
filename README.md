@@ -14,7 +14,7 @@ cd ../../
 For the preparation of datasets, please refer to [CoCosNet](https://github.com/microsoft/CoCosNet).
 
 ## Pretrained Models
-The pretrained models can be downloaded from [here](https://drive.google.com/file/d/1dqL4i5q7TizLt6zqLzgcKda-7RdKZD48/view?usp=sharing), and save them in `checkpoints`.
+The pretrained models can be downloaded from [here](https://drive.google.com/file/d/1dqL4i5q7TizLt6zqLzgcKda-7RdKZD48/view?usp=sharing). Saving the pretrained models in `checkpoints`.
 
 ## Inference Using Pretrained Model
 Then run the command 
