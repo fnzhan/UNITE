@@ -1,5 +1,4 @@
-# UNITE
-Unbalanced Feature Transport for Exemplar-based Image Translation (CVPR 2021)  <br>
+# Cross-domain Correspondence Learning for Exemplar-based Image Translation (CVPR 2021)
 
 ## Preparation
 Clone the Synchronized-BatchNorm-PyTorch repository.
@@ -35,7 +34,11 @@ If you use this code for your research, please cite our papers.
 @inproceedings{zhan2021unite,
   title={Unbalanced Feature Transport for Exemplar-based Image Translation},
   author={Zhan, Fangneng and Yu, Yingchen and Cui, Kaiwen and Zhang, Gongjie and Lu, Shijian and Pan, Jianxiong and Zhang, Changgong and Ma, Feiying and Xie, Xuansong and Miao, Chunyan},
-  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={15028--15038},
   year={2021}
 }
 ```
+
+## Acknowledgments
+This code borrows heavily from [CoCosNet](https://github.com/microsoft/CoCosNet). We also thank [SPADE](https://github.com/NVlabs/SPADE) and [Synchronized Normalization](https://github.com/vacancy/Synchronized-BatchNorm-PyTorch).
