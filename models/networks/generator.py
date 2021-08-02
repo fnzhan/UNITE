@@ -64,6 +64,11 @@ class SEACEGenerator(BaseNetwork):
         atten3 = self.attn3(seg_feat3, size=32)
         atten4 = self.attn4(seg_feat4, size=16)
 
+        print (atten2.shape, atten2.min(), atten2.max())
+        print(atten3.shape, atten3.min(), atten3.max())
+        print(atten4.shape, atten4.min(), atten4.max())
+        print (1/0)
+
         x = torch.cat((seg_feat5, ref_feat5), 1)
         x = F.interpolate(x, size=(self.sh, self.sw))
         x = self.fc(x)

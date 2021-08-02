@@ -24,7 +24,7 @@ model.eval()
 
 # save_root = os.path.join(os.path.dirname(opt.checkpoints_dir), 'output')
 # save_root = '/data/vdd/fangneng.zfn/SFERT5/' + opt.name
-save_root = opt.checkpoints_dir.split('checkpoints')[0] + opt.name + '0/'
+save_root = opt.checkpoints_dir.split('checkpoints')[0] + 'results/' + opt.name + '/'
 
 
 
@@ -32,8 +32,8 @@ save_root = opt.checkpoints_dir.split('checkpoints')[0] + opt.name + '0/'
 for i, data_i in enumerate(dataloader):
     print('{} / {}'.format(i, len(dataloader)))
     # if i * opt.batchSize >= 4993:
-    if i * opt.batchSize >= 400:
-        break
+    # if i * opt.batchSize >= 400:
+    #     break
     imgs_num = data_i['label'].shape[0]
     # out = model(data_i, mode='inference')
     out = model(data_i, mode='inference')
@@ -63,23 +63,21 @@ for i, data_i in enumerate(dataloader):
         vutils.save_image(pre_, save_root + '/pre/' + str(i) + '_' + str(j) + '.jpg',
                 nrow=imgs_num, padding=0, normalize=False)
 
-        # gt_ = (gt_ + 1) / 2
-        # vutils.save_image(gt_, save_root + '/gt/' + str(i) + '_' + str(j) + '.jpg',
+        gt_ = (gt_ + 1) / 2
+        vutils.save_image(gt_, save_root + '/gt/' + str(i) + '_' + str(j) + '.jpg',
+                          nrow=imgs_num, padding=0, normalize=False)
+
+        # ref_ = (ref_ + 1) / 2
+        # vutils.save_image(ref_, save_root + '/pre/' + str(i) + '_' + str(j) + '_ref.jpg',
         #                   nrow=imgs_num, padding=0, normalize=False)
 
-        ref_ = (ref_ + 1) / 2
-        vutils.save_image(ref_, save_root + '/pre/' + str(i) + '_' + str(j) + '_ref.jpg',
-                          nrow=imgs_num, padding=0, normalize=False)
-        #
-        # print (label_.shape)
-        label_ = masktorgb(label_.cpu().numpy())
-        label_ = torch.from_numpy(label_).float() / 128 - 1
-        vutils.save_image(label_[j], save_root + '/pre/' + str(i) + '_' + str(j) + '_label.png',
-                          nrow=imgs_num, padding=0, normalize=False)
+        # label_ = masktorgb(label_.cpu().numpy())
+        # label_ = torch.from_numpy(label_).float() / 128 - 1
+        # vutils.save_image(label_[j], save_root + '/pre/' + str(i) + '_' + str(j) + '_label.png',
+        #                   nrow=imgs_num, padding=0, normalize=False)
 
-        warp_ = (warp_ + 1) / 2
-        vutils.save_image(warp_, save_root + '/pre/' + str(i) + '_' + str(j) + '_warp.jpg',
-                          nrow=imgs_num, padding=0, normalize=False)
+        # warp_ = (warp_ + 1) / 2
+        # vutils.save_image(warp_, save_root + '/pre/' + str(i) + '_' + str(j) + '_warp.jpg',
+        #                   nrow=imgs_num, padding=0, normalize=False)
 
-        print(1/0)
-
+        # print(1/0)

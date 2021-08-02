@@ -232,8 +232,6 @@ class Pix2PixModel(torch.nn.Module):
         if 'loss_novgg_featpair' in generate_out and generate_out['loss_novgg_featpair'] is not None:
             G_losses['no_vgg_feat'] = generate_out['loss_novgg_featpair']
 
-        G_losses['nceloss'] = generate_out['nceloss']
-
         if self.opt.warp_cycle_w > 0:
             if not self.opt.warp_patch:
                 ref = F.avg_pool2d(ref_image, self.opt.warp_stride)

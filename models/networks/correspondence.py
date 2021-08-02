@@ -10,7 +10,6 @@ import util.util as util
 from .geomloss import SamplesLoss
 from PIL import Image
 import torch.nn.utils.spectral_norm as spectral_norm
-from .nceloss import BidirectionalNCE1
 
 class ResidualBlock(nn.Module):
 
@@ -197,7 +196,6 @@ class NoVGGCorrespondence(BaseNetwork):
             self.upsampling = nn.Upsample(scale_factor=self.down)
         self.zero_tensor = None
         self.relu = nn.ReLU()
-        self.nceloss = BidirectionalNCE1()
 
     def forward(self, ref_img, real_img, seg_map, ref_seg_map, detach_flag=False):
         coor_out = {}
@@ -228,11 +226,6 @@ class NoVGGCorrespondence(BaseNetwork):
         else:
             cont_features = self.layer(adp_feat_seg)
             ref_features = self.layer(adp_feat_img)
-
-        nceloss = self.nceloss(cont_features, ref_features)
-        coor_out['nceloss'] = nceloss
-
-
 
         dim_mean = 1 if self.opt.PONO_C else -1
 
@@ -284,7 +277,6 @@ class NoVGGCorrespondence(BaseNetwork):
         # print(theta_w.min(), theta_w.max())
         # print(phi_w.min(), phi_w.max())
         # print (conf_map.min(), conf_map.max())
-
         # print (1/0)
 
         # phi_w = F.softmax(phi_w.view(batch_size, N) * 25.0, dim=-1)
