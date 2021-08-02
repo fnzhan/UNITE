@@ -10,10 +10,24 @@ cp -rf Synchronized-BatchNorm-PyTorch/sync_batchnorm .
 cd ../../
 ```
 
-**Pretrained VGG model** Download from [here](https://drive.google.com/file/d/1fp7DAiXdf0Ay-jANb8f0RHYLTRyjNv4m/view?usp=sharing), move it to `models/`. This model is used to calculate training loss.
+**VGG model** for computing loss. Download from [here](https://drive.google.com/file/d/1fp7DAiXdf0Ay-jANb8f0RHYLTRyjNv4m/view?usp=sharing), move it to `models/`.
+
+For the preparation of datasets, please refer to [CoCosNet](https://github.com/microsoft/CoCosNet).
 
 ## Pretrained Models
-Pre-trained models will be released soon with the extended version.
+The pretrained models can be downloaded from [here](https://drive.google.com/file/d/1fp7DAiXdf0Ay-jANb8f0RHYLTRyjNv4m/view?usp=sharing).
+
+## Inference Using Pretrained Model
+Then run the command 
+````bash
+bash test_ade.sh
+````
+
+## Training
+Then run the command 
+````bash
+bash train_ade.sh
+````
 
 ### Citation
 If you use this code for your research, please cite our papers.
