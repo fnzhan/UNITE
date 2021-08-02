@@ -12,7 +12,7 @@ cd ../../
 
 **Pretrained VGG model** Download from [here](https://drive.google.com/file/d/1fp7DAiXdf0Ay-jANb8f0RHYLTRyjNv4m/view?usp=sharing), move it to `models/`. This model is used to calculate training loss.
 
-## Pre-trained Models
+## Pretrained Models
 Pre-trained models will be released soon with the extended version.
 
 ### Citation
