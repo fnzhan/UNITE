@@ -1,1 +1,0 @@
-python3 test_matching.py --name deepfashion_ot --dataset_mode deepfashion --dataroot '/home/fangneng.zfn/datasets/DeepFashion' --gpu_ids 0 --nThreads 0 --batchSize 1 --use_attention --PONO --PONO_C --warp_bilinear --no_flip --video_like #--adaptor_kernel 4
