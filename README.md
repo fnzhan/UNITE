@@ -1,4 +1,4 @@
-# Cross-domain Correspondence Learning for Exemplar-based Image Translation (CVPR 2021)
+# Unbalanced Feature Transport for Exemplar-based Image Translation (CVPR 2021)
 ![Teaser](teaser.png)
 
 ## Preparation
