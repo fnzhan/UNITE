@@ -1,6 +1,15 @@
-# UNITE and UNITE+
+# UNITE
 Unbalanced Feature Transport for Exemplar-based Image Translation (CVPR 2021)  <br>
-Unbalanced Intrinsic Feature Transport for Exemplar-based Image Translation (Extension)
+
+## Preparation
+Clone the Synchronized-BatchNorm-PyTorch repository.
+```
+cd models/networks/
+git clone https://github.com/vacancy/Synchronized-BatchNorm-PyTorch
+cp -rf Synchronized-BatchNorm-PyTorch/sync_batchnorm .
+cd ../../
+
+**Pretrained VGG model** Download from [here](https://drive.google.com/file/d/1fp7DAiXdf0Ay-jANb8f0RHYLTRyjNv4m/view?usp=sharing), move it to `models/`. This model is used to calculate training loss.
 
 ## Pre-trained Models
 Pre-trained models will be released soon with the extended version.
