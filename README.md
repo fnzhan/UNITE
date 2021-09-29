@@ -42,4 +42,4 @@ If you use this code for your research, please cite our papers.
 ```
 
 ## Acknowledgments
-This code borrows heavily from [CoCosNet](https://github.com/microsoft/CoCosNet). We also thank [SPADE](https://github.com/NVlabs/SPADE) and [Synchronized Normalization](https://github.com/vacancy/Synchronized-BatchNorm-PyTorch).
+This code borrows heavily from [CoCosNet](https://github.com/microsoft/CoCosNet). We also thank [SPADE](https://github.com/NVlabs/SPADE), [Synchronized Normalization](https://github.com/vacancy/Synchronized-BatchNorm-PyTorch) and [Geometric Loss](https://www.kernel-operations.io/geomloss/).
