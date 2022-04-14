@@ -21,8 +21,8 @@ class BidirectionalNCE1(nn.Module):
         super().__init__()
         self.cross_entropy_loss = torch.nn.CrossEntropyLoss(reduction='none')
         self.mask_dtype = torch.bool #torch.uint8 if version.parse(torch.__version__)
-        self.cosm = math.cos(0.3)
-        self.sinm = math.sin(0.3)
+        self.cosm = math.cos(0.25)
+        self.sinm = math.sin(0.25)
 
     def forward(self, feat_q, feat_k):
 
