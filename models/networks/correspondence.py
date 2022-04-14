@@ -10,6 +10,7 @@ import util.util as util
 from .geomloss import SamplesLoss
 from PIL import Image
 import torch.nn.utils.spectral_norm as spectral_norm
+from .nceloss import BidirectionalNCE1
 
 class ResidualBlock(nn.Module):
 
@@ -145,6 +146,37 @@ class VGG19_feature_color_torchversion(nn.Module):
         out['r54'] = F.relu(self.conv5_4(out['r53']))
         out['p5'] = self.pool5(out['r54'])
         return [out[key] for key in out_keys]
+    
+
+class Normalize(nn.Module):
+
+    def __init__(self, power=2):
+        super(Normalize, self).__init__()
+        self.power = power
+
+    def forward(self, x):
+        norm = x.pow(self.power).sum(1, keepdim=True).pow(1. / self.power)
+        out = x.div(norm + 1e-7)
+        return out
+
+class PatchSampleF(nn.Module):
+    def __init__(self):
+        # potential issues: currently, we use the same patch_ids for multiple images in the batch
+        super(PatchSampleF, self).__init__()
+        self.l2norm = Normalize(2)
+
+    def forward(self, feat, num_patches=64, patch_ids=None):
+        feat_reshape = feat.permute(0, 2, 3, 1).flatten(1, 2)
+        if patch_ids is not None:
+            patch_id = patch_ids
+        else:
+            patch_id = torch.randperm(feat_reshape.shape[1], device=feat[0].device)
+            patch_id = patch_id[:int(min(num_patches, patch_id.shape[0]))]  # .to(patch_ids.device)
+        x_sample = feat_reshape[:, patch_id, :].flatten(0, 1)  # reshape(-1, x.shape[1])
+        x_sample = self.l2norm(x_sample)
+        # return_feats.append(x_sample)
+        return x_sample, patch_id
+    
 
 class NoVGGCorrespondence(BaseNetwork):
     # input is Al, Bl, channel = 1, range~[0,255]
@@ -196,6 +228,10 @@ class NoVGGCorrespondence(BaseNetwork):
             self.upsampling = nn.Upsample(scale_factor=self.down)
         self.zero_tensor = None
         self.relu = nn.ReLU()
+        
+        self.nceloss = BidirectionalNCE1()
+        self.patch_sample = PatchSampleF()
+        
 
     def forward(self, ref_img, real_img, seg_map, ref_seg_map, detach_flag=False):
         coor_out = {}
@@ -212,6 +248,13 @@ class NoVGGCorrespondence(BaseNetwork):
             adaptive_feature_img_pair = self.adaptive_model_img(real_img, real_img)
             adaptive_feature_img_pair = util.feature_normalize(adaptive_feature_img_pair)
             coor_out['loss_novgg_featpair'] = F.l1_loss(adp_feat_seg, adaptive_feature_img_pair) * self.opt.novgg_featpair
+            
+            if self.opt.mcl:
+                feat_k, sample_ids = self.patch_sample(seg_feat6, 64, None)
+                feat_q, _ = self.patch_sample(adaptive_feature_img_pair, 64, sample_ids)
+    
+                nceloss = self.nceloss(feat_k, feat_q)
+                coor_out['nceloss'] = nceloss * self.opt.nce_w
 
         if self.opt.use_coordconv:
             adp_feat_seg = self.addcoords(adp_feat_seg)
