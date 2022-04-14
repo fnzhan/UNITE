@@ -2,7 +2,7 @@
 ![Teaser](teaser.png)
 
 ## Marginal Contrastive Correspondence for Guided Image Generation [CVPR 2022]
-Including marginal contrastive learning for building correspondence. Please check models/networks/nceloss.py and https://github.com/fnzhan/UNITE/blob/15b81c8d3e214faa93990b683d72c8fcc226278a/models/networks/correspondence.py#L252
+Including marginal contrastive learning for building correspondence. Please check models/networks/nceloss.py and models/networks/correspondence.py.
 
 ## Preparation
 Clone the Synchronized-BatchNorm-PyTorch repository.
