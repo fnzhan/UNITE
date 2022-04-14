@@ -29,9 +29,9 @@ Then run the command
 bash train_ade.sh
 ````
 
-If you want to use marginal contrastive learning for building corresondence, please add --mcl and set the weight --nce_w to the train_ade.sh. Then run:
+If you want to use marginal contrastive learning for building corresondence, please add --mcl and set the weight --nce_w in train_xxx.sh. Then run:
 ````bash
-bash train_ade.sh
+bash train_xxx.sh
 ````
 
 ### Citation
