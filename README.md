@@ -1,8 +1,10 @@
 # Unbalanced Feature Transport for Exemplar-based Image Translation [CVPR 2021]
 ![Teaser](teaser.png)
 
-## Marginal Contrastive Correspondence for Guided Image Generation [CVPR 2022]
-Including marginal contrastive learning for building correspondence. Please check models/networks/nceloss.py and models/networks/correspondence.py.
+
+## Update
+- *04/2022*: We include [Marginal Contrastive Correspondence for Guided Image Generation](https://drive.google.com/drive/folders/1mI3ufHgZOmHeShoezk77Gr_GhdqCPGif?usp=sharing) [CVPR 2022] in this project. Marginal contrastive learning is introduced for building correspondence. Please check models/networks/nceloss.py and models/networks/correspondence.py.
+
 
 ## Preparation
 Clone the Synchronized-BatchNorm-PyTorch repository.
