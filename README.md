@@ -3,7 +3,7 @@
 
 
 ## Update
-- *04/2022*: We include [Marginal Contrastive Correspondence for Guided Image Generation](https://drive.google.com/drive/folders/1mI3ufHgZOmHeShoezk77Gr_GhdqCPGif?usp=sharing) [CVPR 2022] in this project. Marginal contrastive learning is introduced for building correspondence. Please check models/networks/nceloss.py and models/networks/correspondence.py.
+- *04/2022*: We include [Marginal Contrastive Correspondence for Guided Image Generation](https://arxiv.org/abs/2204.00442#:~:text=Marginal%20Contrastive%20Correspondence%20for%20Guided%20Image%20Generation,-Fangneng%20Zhan%2C%20Yingchen&text=Exemplar%2Dbased%20image%20translation%20establishes,to%20achieve%20realistic%20image%20translation.) [CVPR 2022] in this project. Marginal contrastive learning is introduced for building correspondence. Please check models/networks/nceloss.py and models/networks/correspondence.py.
 
 
 ## Preparation
